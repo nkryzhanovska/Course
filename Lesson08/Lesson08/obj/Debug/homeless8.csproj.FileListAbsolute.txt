@@ -1,0 +1,6 @@
+E:\Automation courses\homeless8\homeless8\bin\Debug\homeless8.exe.config
+E:\Automation courses\homeless8\homeless8\bin\Debug\homeless8.exe
+E:\Automation courses\homeless8\homeless8\bin\Debug\homeless8.pdb
+E:\Automation courses\homeless8\homeless8\obj\Debug\homeless8.exe
+E:\Automation courses\homeless8\homeless8\obj\Debug\homeless8.pdb
+E:\Automation courses\homeless8\homeless8\obj\Debug\homeless8.csprojResolveAssemblyReference.cache

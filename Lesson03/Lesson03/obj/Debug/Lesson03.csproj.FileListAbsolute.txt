@@ -1,0 +1,5 @@
+E:\Automation courses\Lesson03\Lesson03\bin\Debug\Lesson03.exe.config
+E:\Automation courses\Lesson03\Lesson03\bin\Debug\Lesson03.exe
+E:\Automation courses\Lesson03\Lesson03\bin\Debug\Lesson03.pdb
+E:\Automation courses\Lesson03\Lesson03\obj\Debug\Lesson03.exe
+E:\Automation courses\Lesson03\Lesson03\obj\Debug\Lesson03.pdb

@@ -1,0 +1,5 @@
+E:\Automation courses\Checkwork\Checkwork\bin\Debug\Checkwork.exe.config
+E:\Automation courses\Checkwork\Checkwork\bin\Debug\Checkwork.exe
+E:\Automation courses\Checkwork\Checkwork\bin\Debug\Checkwork.pdb
+E:\Automation courses\Checkwork\Checkwork\obj\Debug\Checkwork.exe
+E:\Automation courses\Checkwork\Checkwork\obj\Debug\Checkwork.pdb

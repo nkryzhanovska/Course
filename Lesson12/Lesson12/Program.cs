@@ -12,23 +12,34 @@ namespace Lesson12
 
         static void Main(string[] args)
         {
-            string WhiteList = "Whitelist.txt";
-            string BlackList = "Blacklist.txt";
-            string InputList = "Input.txt";
+            string WhiteFile = "Whitelist.txt";
+            string BlackFile = "Blacklist.txt";
+            string InputFile = "Input.txt";
 
-            string OutputBlacklist = "Output_blacklist.txt";
-            string OutputWhitelist = "Output_whitelist.txt";
-            string OutputBlackWhitelist = "Output_black_and_white.txt";
-            string temp = "temp.txt";
+            string OutputBlackFile = "Output_blacklist.txt";
+            string OutputWhiteFile = "Output_whitelist.txt";
+            string OutputBlackWhiteFile = "Output_black_and_white.txt";
+            
+            
+            //read files
+            ReadFile read = new ReadFile();
 
+            List<string> InputList = new List<string>();
+            InputList = read.Read(InputFile);
+
+            List<string> WhiteList = new List<string>();
+            WhiteList = read.Read(WhiteFile);
+
+            List<string> BlackList = new List<string>();
+            BlackList = read.Read(BlackFile);
+
+            //write files
+            WriteFile write = new WriteFile();
+            
+            //create filters
             List<IFilter> filter = new List<IFilter>();
             filter.Add(new WhiteFilter());
             filter.Add(new BlackFilter());
-
-            //List<IFilter> whitefilter = new WhiteFilter();
-            //List<IFilter> blackfilter = new BlackFilter();
-            IFilter blackfilter = new BlackFilter();
-            IFilter whitefilter = new WhiteFilter();
 
             while (true)
             {
@@ -44,20 +55,40 @@ namespace Lesson12
                 {
                     case 1:
                         Console.WriteLine("Filtering by Black List ");
-                        blackfilter.Filter(InputList, BlackList, OutputBlacklist);
-                        
+                        foreach (string a in InputList)
+                        {
+                            if (filter[1].IsSatisfied(BlackList, a))
+                            { 
+                            write.Write(a, OutputBlackFile);
+                            }
+                        }
                         break;
 
                     case 2:
                         Console.WriteLine("Filtering by White List ");
-                        whitefilter.Filter(InputList, WhiteList, OutputWhitelist);
+                        foreach (string a in InputList)
+                        {
+                            if (filter[0].IsSatisfied(WhiteList, a))
+                            {
+                                write.Write(a, OutputWhiteFile);
+                            }
+                        }
                         break;
 
                     case 3:
                         Console.WriteLine("Filtering by Black and White Lists ");
 
-                        blackfilter.Filter(InputList, BlackList, temp);
-                        whitefilter.Filter(temp, WhiteList, OutputBlackWhitelist);
+                        foreach (string a in InputList)
+                        {
+                            if (filter[1].IsSatisfied(BlackList, a))
+                            {
+                                if (filter[0].IsSatisfied(WhiteList, a))
+                                {
+                                    write.Write(a, OutputBlackWhiteFile); 
+                                }
+                                
+                            }
+                        }
                         break;
 
                     case 4: System.Environment.Exit(1);

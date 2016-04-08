@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson13
+namespace Lesson12
 {
-    public interface IFilter
+    public interface IReadFile
     {
-        bool IsSatisfied(List<string> FilterList, string line);
-        
+        List<string> Read(string path);
     }
 }

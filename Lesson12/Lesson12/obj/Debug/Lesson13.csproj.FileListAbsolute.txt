@@ -3,3 +3,6 @@ E:\AutomationCourses\Bush\Lesson13\Lesson12\obj\Debug\Lesson12.pdb
 E:\AutomationCourses\Bush\Lesson13\Lesson12\bin\Debug\Lesson12.exe.config
 E:\AutomationCourses\Bush\Lesson13\Lesson12\bin\Debug\Lesson12.exe
 E:\AutomationCourses\Bush\Lesson13\Lesson12\bin\Debug\Lesson12.pdb
+E:\AutomationCourses\Bush\Lesson12\Lesson12\bin\Debug\Lesson12.exe.config
+E:\AutomationCourses\Bush\Lesson12\Lesson12\obj\Debug\Lesson12.exe
+E:\AutomationCourses\Bush\Lesson12\Lesson12\obj\Debug\Lesson12.pdb

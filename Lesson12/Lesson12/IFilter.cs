@@ -8,7 +8,7 @@ namespace Lesson12
 {
     public interface IFilter
     {
-        bool IsSatisfied();
-        void Filter(string InputFile, string FilterFile, string OutputFile);
+        bool IsSatisfied(List<string> FilterList, string line);
+        
     }
 }

@@ -3,3 +3,9 @@ E:\Automation courses\Lesson12\Lesson12\bin\Debug\Lesson12.exe
 E:\Automation courses\Lesson12\Lesson12\bin\Debug\Lesson12.pdb
 E:\Automation courses\Lesson12\Lesson12\obj\Debug\Lesson12.exe
 E:\Automation courses\Lesson12\Lesson12\obj\Debug\Lesson12.pdb
+E:\AutomationCourses\Bush\Lesson12\Lesson12\bin\Debug\Lesson12.exe.config
+E:\AutomationCourses\Bush\Lesson12\Lesson12\obj\Debug\Lesson12.exe
+E:\AutomationCourses\Bush\Lesson12\Lesson12\obj\Debug\Lesson12.pdb
+E:\AutomationCourses\Bush\Lesson12\Lesson12\bin\Debug\Lesson12.exe
+E:\AutomationCourses\Bush\Lesson12\Lesson12\bin\Debug\Lesson12.pdb
+E:\AutomationCourses\Bush\Lesson12\Lesson12\obj\Debug\Lesson12.csprojResolveAssemblyReference.cache

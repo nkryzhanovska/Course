@@ -23,7 +23,7 @@ namespace Lesson12
             }
         }
 
-        public void WriteList(HashSet<string> tempList, string tempOutput)
+        public void WriteFile(HashSet<string> tempList, string tempOutput)
         {
             using (StreamWriter writer = new StreamWriter(tempOutput))
             {

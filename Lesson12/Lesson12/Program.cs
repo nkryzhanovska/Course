@@ -19,11 +19,16 @@ namespace Lesson12
             string OutputBlacklist = "Output_blacklist.txt";
             string OutputWhitelist = "Output_whitelist.txt";
             string OutputBlackWhitelist = "Output_black_and_white.txt";
+            string temp = "temp.txt";
 
+            List<IFilter> filter = new List<IFilter>();
+            filter.Add(new WhiteFilter());
+            filter.Add(new BlackFilter());
 
-            Filter blackfilter = new Filter();
-            Filter whitefilter = new Filter();
-            Filter blackwhitefilter = new Filter();
+            //List<IFilter> whitefilter = new WhiteFilter();
+            //List<IFilter> blackfilter = new BlackFilter();
+            IFilter blackfilter = new BlackFilter();
+            IFilter whitefilter = new WhiteFilter();
 
             while (true)
             {
@@ -39,18 +44,20 @@ namespace Lesson12
                 {
                     case 1:
                         Console.WriteLine("Filtering by Black List ");
-                        blackfilter.ApplyFilter(InputList, BlackList, OutputBlacklist, 1);
-
+                        blackfilter.Filter(InputList, BlackList, OutputBlacklist);
+                        
                         break;
 
                     case 2:
                         Console.WriteLine("Filtering by White List ");
-                        whitefilter.ApplyFilter(InputList, WhiteList, OutputWhitelist, 2);
+                        whitefilter.Filter(InputList, WhiteList, OutputWhitelist);
                         break;
 
                     case 3:
                         Console.WriteLine("Filtering by Black and White Lists ");
-                        blackwhitefilter.ApplyFilter1(InputList, BlackList, WhiteList, OutputBlackWhitelist, 3);
+
+                        blackfilter.Filter(InputList, BlackList, temp);
+                        whitefilter.Filter(temp, WhiteList, OutputBlackWhitelist);
                         break;
 
                     case 4: System.Environment.Exit(1);

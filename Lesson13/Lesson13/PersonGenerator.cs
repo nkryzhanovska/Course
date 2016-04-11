@@ -7,17 +7,27 @@ using System.Timers;
 
 namespace Lesson13
 {
+    public delegate void PersonGeneratorEventHandler(object sender, NewPersonEventArgs args);
+
     public class PersonGenerator
     {
         private string Path;
         Timer timer = new Timer();
+        public event NewPersonEventArgs NewPerson;
 
         public PersonGenerator(string path)
         {
             Path = path;
         }
 
-        public PersonGenerator();
+        public PersonGenerator(int value)
+        {
+            timer.Interval = value * 1000;
+            timer.Elapsed += OnTimedEvent;
+            timer.AutoReset = true;
+            timer.Enabled = true;
+            timer.Start();
+        }
 
         public string Generator()
         {
@@ -30,22 +40,11 @@ namespace Lesson13
             return line;
         }
 
-        public void GenerateTimer()
+        
+
+        private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            int _counter = 0;
-            
-            timer = new Timer();
-            timer.Interval = 2000;
-            timer.Elapsed += new EventHandler(TimerEventProcessor);
-            label1.Text = _counter.ToString();
-            timer.Start();
-
+            Generator();
         }
-
-        private void TimerEventProcessor(object sender, ElapsedEventArgs e)
-            {
-            label1.Text = _counter.ToString();
-            _counter += 1;
-            }
     }
 }

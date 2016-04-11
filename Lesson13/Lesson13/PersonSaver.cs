@@ -8,5 +8,10 @@ namespace Lesson13
 {
     public class PersonSaver
     {
+        public void SavePerson(object sender, NewPersonEventArgs args)
+        {
+            
+
+        }
     }
 }

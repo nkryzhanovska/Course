@@ -12,10 +12,18 @@ namespace Lesson13
 
         public Person()
         {
-            PersonGenerator NameGenerator = new PersonGenerator();
-            Name = NameGenerator.Generator();
+            //PersonGenerator NameGenerator = new PersonGenerator();
+            //Name = NameGenerator.Generator();
+
+            Console.WriteLine("Please specify Timer interval:");
+            int time = Int32.Parse(Console.ReadLine());
+
+            PersonGenerator NameGenerator = new PersonGenerator(time);
+            PersonSaver NameSaver = new PersonSaver();
+            NameGenerator.NewPerson += NameSaver.SavePerson;
+            string newPerson = personGen.Generator();
         }
-    
+
 
     }
 }

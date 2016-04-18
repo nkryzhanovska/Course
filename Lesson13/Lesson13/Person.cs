@@ -8,20 +8,17 @@ namespace Lesson13
 {
     public class Person : PersonGenerator
     {
-        string Name;
+        public string Name;
+        public string Path;
+        public int time;
 
-        public Person()
+        public void PersonEvent()
         {
-            //PersonGenerator NameGenerator = new PersonGenerator();
-            //Name = NameGenerator.Generator();
-
-            Console.WriteLine("Please specify Timer interval:");
-            int time = Int32.Parse(Console.ReadLine());
-
             PersonGenerator NameGenerator = new PersonGenerator(time);
+            NameGenerator.Path = Path;
             PersonSaver NameSaver = new PersonSaver();
             NameGenerator.NewPerson += NameSaver.SavePerson;
-            string newPerson = personGen.Generator();
+            Name = NameGenerator.Generator();            
         }
 
 

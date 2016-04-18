@@ -9,15 +9,16 @@ namespace Lesson13
 {
     public delegate void PersonGeneratorEventHandler(object sender, NewPersonEventArgs args);
 
-    public class PersonGenerator
+    public class PersonGenerator:PersonSaver
     {
-        private string Path;
+        public string Path;
         Timer timer = new Timer();
-        public event NewPersonEventArgs NewPerson;
+        public event PersonGeneratorEventHandler NewPerson;
 
-        public PersonGenerator(string path)
+        
+        public PersonGenerator()
         {
-            Path = path;
+            int Count;
         }
 
         public PersonGenerator(int value)
@@ -45,6 +46,19 @@ namespace Lesson13
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
             Generator();
+        }
+
+        public void NewPersonCreated(string person)
+        {
+
+            if (NewPerson == null)
+            {
+                return;
+            }
+
+            NewPersonEventArgs args = new NewPersonEventArgs();
+            args.Person = person;
+            NewPerson(this, args);
         }
     }
 }

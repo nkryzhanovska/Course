@@ -31,6 +31,7 @@
             this.commonListTextBox = new System.Windows.Forms.Label();
             this.commonFilterFileTextBox = new System.Windows.Forms.TextBox();
             this.commonFilterBox = new System.Windows.Forms.GroupBox();
+            this.removeItemFromCommonListButton = new System.Windows.Forms.Button();
             this.addItemToCommonListButton = new System.Windows.Forms.Button();
             this.saveToCommonListButton = new System.Windows.Forms.Button();
             this.newCommonListItemTextBox = new System.Windows.Forms.TextBox();
@@ -58,6 +59,7 @@
             // 
             // commonFilterBox
             // 
+            this.commonFilterBox.Controls.Add(this.removeItemFromCommonListButton);
             this.commonFilterBox.Controls.Add(this.commonListTextBox);
             this.commonFilterBox.Controls.Add(this.addItemToCommonListButton);
             this.commonFilterBox.Controls.Add(this.saveToCommonListButton);
@@ -67,10 +69,21 @@
             this.commonFilterBox.Controls.Add(this.commonFilterListBox);
             this.commonFilterBox.Location = new System.Drawing.Point(21, 15);
             this.commonFilterBox.Name = "commonFilterBox";
-            this.commonFilterBox.Size = new System.Drawing.Size(474, 336);
+            this.commonFilterBox.Size = new System.Drawing.Size(474, 302);
             this.commonFilterBox.TabIndex = 24;
             this.commonFilterBox.TabStop = false;
             this.commonFilterBox.Text = "Settings";
+            // 
+            // removeItemFromCommonListButton
+            // 
+            this.removeItemFromCommonListButton.Enabled = false;
+            this.removeItemFromCommonListButton.Location = new System.Drawing.Point(301, 61);
+            this.removeItemFromCommonListButton.Name = "removeItemFromCommonListButton";
+            this.removeItemFromCommonListButton.Size = new System.Drawing.Size(23, 23);
+            this.removeItemFromCommonListButton.TabIndex = 23;
+            this.removeItemFromCommonListButton.Text = "-";
+            this.removeItemFromCommonListButton.UseVisualStyleBackColor = true;
+            this.removeItemFromCommonListButton.Click += new System.EventHandler(this.removeItemFromCommonListButton_Click);
             // 
             // addItemToCommonListButton
             // 
@@ -99,6 +112,7 @@
             this.newCommonListItemTextBox.Name = "newCommonListItemTextBox";
             this.newCommonListItemTextBox.Size = new System.Drawing.Size(100, 20);
             this.newCommonListItemTextBox.TabIndex = 20;
+            this.newCommonListItemTextBox.TextChanged += new System.EventHandler(this.newCommonListItemTextBox_TextChanged);
             // 
             // commonFilterFileButton
             // 
@@ -115,8 +129,9 @@
             this.commonFilterListBox.FormattingEnabled = true;
             this.commonFilterListBox.Location = new System.Drawing.Point(9, 63);
             this.commonFilterListBox.Name = "commonFilterListBox";
-            this.commonFilterListBox.Size = new System.Drawing.Size(138, 251);
+            this.commonFilterListBox.Size = new System.Drawing.Size(138, 225);
             this.commonFilterListBox.TabIndex = 19;
+            this.commonFilterListBox.SelectedIndexChanged += new System.EventHandler(this.commonFilterListBox_SelectedIndexChanged);
             // 
             // FilterControls
             // 
@@ -124,7 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.commonFilterBox);
             this.Name = "FilterControls";
-            this.Size = new System.Drawing.Size(835, 383);
+            this.Size = new System.Drawing.Size(562, 367);
             this.commonFilterBox.ResumeLayout(false);
             this.commonFilterBox.PerformLayout();
             this.ResumeLayout(false);
@@ -141,5 +156,6 @@
         private System.Windows.Forms.TextBox newCommonListItemTextBox;
         private System.Windows.Forms.Button commonFilterFileButton;
         private System.Windows.Forms.ListBox commonFilterListBox;
+        private System.Windows.Forms.Button removeItemFromCommonListButton;
     }
 }

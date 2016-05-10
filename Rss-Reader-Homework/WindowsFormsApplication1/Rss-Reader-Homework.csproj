@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3CA3D2E2-73AC-4708-AF6A-DA4F3E1F316C}</ProjectGuid>
+    <ProjectGuid>{8C9F2DF8-7053-4015-86F7-A2F7AB7C2A6B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lesson15</RootNamespace>
-    <AssemblyName>Lesson15</AssemblyName>
+    <RootNamespace>WindowsFormsApplication1</RootNamespace>
+    <AssemblyName>WindowsFormsApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,29 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\IFilterViewControl.cs" />
-    <Compile Include="View\FilterControls.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\FilterControls.Designer.cs">
-      <DependentUpon>FilterControls.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controller\FilterViewControl.cs" />
-    <Compile Include="Model\IFilter.cs" />
-    <Compile Include="View\IFilterView.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Rss-UI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Rss-UI.Designer.cs">
+      <DependentUpon>Rss-UI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\FilterControls.resx">
-      <DependentUpon>FilterControls.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Rss.cs" />
+    <Compile Include="RssManager.cs" />
+    <EmbeddedResource Include="Rss-UI.resx">
+      <DependentUpon>Rss-UI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,7 +80,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

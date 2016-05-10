@@ -13,6 +13,7 @@ namespace Lesson15
     public partial class FilterControls : UserControl, IFilterView
     {
         private string filterName = String.Empty;
+        private List<string> filteritems;
 
         public FilterControls()
         {
@@ -20,6 +21,7 @@ namespace Lesson15
         }
 
         public event FilterItemAddedEventHandler ItemAdded;
+        public event FilterItemRemovedEventHandler ItemRemoved;
 
         public event ConfigFileSelectedEventHandler ConfigFileSelected;
 
@@ -48,13 +50,7 @@ namespace Lesson15
             }
         }
 
-        public void LoadFilterItems(List<string> filterItems)
-        {
-            foreach (string item in filterItems)
-            {
-                commonFilterListBox.Items.Add(item);
-            }
-        }
+       
 
         private void commonFilterFileButton_Click(object sender, EventArgs e)
         {
@@ -92,5 +88,53 @@ namespace Lesson15
             }
         }
 
+
+
+        public List<string> FilterItems
+        {
+            get
+            {
+                return filteritems;
+            }
+            set
+            {
+                filteritems = value;
+                commonFilterListBox.DataSource = null;
+                commonFilterListBox.DataSource = filteritems;
+            }
+        }
+
+        private void removeItemFromCommonListButton_Click(object sender, EventArgs e)
+        {
+            OnItemRemove();
+        }
+
+        private void OnItemRemove()
+        {
+            //string curItem = commonFilterListBox.SelectedItem.ToString();
+            //int index = commonFilterListBox.FindString(curItem);
+            //if (index != -1)
+            //{
+            //   commonFilterListBox.SetSelected(index, true);
+
+            //}
+
+            if (ItemRemoved != null)
+            {
+                ItemRemoved(this, commonFilterListBox.ToString());
+            }
+        }
+
+        private void newCommonListItemTextBox_TextChanged(object sender, EventArgs e)
+        {
+            addItemToCommonListButton.Enabled = !String.IsNullOrEmpty(newCommonListItemTextBox.Text);
+        }
+
+        private void commonFilterListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            removeItemFromCommonListButton.Enabled = commonFilterListBox.Created;
+            
+                
+        }
     }
 }

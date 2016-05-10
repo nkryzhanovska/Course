@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson15
+namespace Lesson15.Controller
 {
-    public class FilterViewControl
+    public interface IFilterViewControl
     {
-
+        void AttachView(IFilterView view);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lesson15.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,12 @@ namespace Lesson15
 {
     public partial class MainForm : Form
     {
+        FilterViewControl controller;
         public MainForm()
         {
             InitializeComponent();
+            controller = new FilterViewControl();
+            controller.AttachView(newFilterControl);
         }
 
         private void browseInputbutton_Click(object sender, EventArgs e)

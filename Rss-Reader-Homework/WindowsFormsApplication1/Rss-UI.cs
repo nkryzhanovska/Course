@@ -18,9 +18,9 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        RssManager reader = new RssManager();
-        Collection<Rss.Items> list;
-        ListViewItem row;
+        RssManager CurrentFeed;
+        
+        
 
         private void addNewFeedUrlTestBox_TextChanged(object sender, EventArgs e)
         {
@@ -29,47 +29,53 @@ namespace WindowsFormsApplication1
 
         private void getFeedButton_Click(object sender, EventArgs e)
         {
-            try
+            if (!String.IsNullOrEmpty(addNewFeedUrlTestBox.Text))
             {
-                reader.RssUrl = addNewFeedUrlTestBox.Text;
-                reader.GetFeed();
-                list = reader.RssItems;
+                displayFeedItemsListBox.Items.Clear();
                 
-                for(int i = 0; i < list.Count;i++)
+                CurrentFeed = new RssManager(addNewFeedUrlTestBox.Text);
+               
+                for (int i = 0; i < CurrentFeed.Items.Count; i++)
                 {
-                    row = new ListViewItem();
-                    row.Text = list[i].Title;
-                    row.SubItems.Add(list[i].Link);
-                    row.SubItems.Add(list[i].Date.ToShortDateString());
-                    displayFeedItemsListBox.Items.Add(row);
-                }  
-            }
-            
-            catch (Exception ex)
-            {
-                MessageBox.Show("You must provide a feed URL");
-            }         
+                    if (CurrentFeed.Items[i] != null)
+                    {
+                        displayFeedItemsListBox.Items.Add(CurrentFeed.Items[i].Title);
+                    }
+                    
+                } 
+                displayFeedItemsListBox.SelectedIndex = 0;
+                                
+            }            
 
         }
 
         private void displayFeedItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (displayFeedItemsListBox.SelectedItems.Count == 1)
+            if (CurrentFeed.Items[displayFeedItemsListBox.SelectedIndex].Description != null)
             {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (list[i].Title == (displayFeedItemsListBox.SelectedItems[0].ToString()))
-                    {
-                        feedItemDescritopnTextBox.Text = list[i].Description.Substring(0, 250);
-                    }
-                }
+                feedDescriptionWebBrowser.DocumentText = CurrentFeed.Items[displayFeedItemsListBox.SelectedIndex].Description;
+                //feedItemDescritopnTextBox.Text = CurrentFeed.Items[displayFeedItemsListBox.SelectedIndex].Description;
             }
 
+            if (CurrentFeed.Items[displayFeedItemsListBox.SelectedIndex].Link != null)
+            {
+                rssLinkLable.Text = "Go To: " + CurrentFeed.Items[displayFeedItemsListBox.SelectedIndex].Title;
+            }
+            
+            
         }
 
         private void displayFeedItemsListBox_DoubleClick(object sender, EventArgs e)
         {
-            //System.Diagnostics.Process.Start(displayFeedItemsListBox.SelectedItems[0]);
+            
+        }
+
+        private void rssLinkLable_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (CurrentFeed.Items[displayFeedItemsListBox.SelectedIndex].Link != null)
+            {
+                System.Diagnostics.Process.Start(CurrentFeed.Items[displayFeedItemsListBox.SelectedIndex].Link);
+            }
         }
 
 

@@ -34,6 +34,8 @@
             this.showFeedArticlesBox = new System.Windows.Forms.GroupBox();
             this.displayFeedItemsListBox = new System.Windows.Forms.ListBox();
             this.showFeedArticleContentBox = new System.Windows.Forms.GroupBox();
+            this.feedDescriptionWebBrowser = new System.Windows.Forms.WebBrowser();
+            this.rssLinkLable = new System.Windows.Forms.LinkLabel();
             this.feedItemDescritopnTextBox = new System.Windows.Forms.TextBox();
             this.addFeedBox.SuspendLayout();
             this.showFeedArticlesBox.SuspendLayout();
@@ -85,13 +87,15 @@
             this.displayFeedItemsListBox.HorizontalScrollbar = true;
             this.displayFeedItemsListBox.Location = new System.Drawing.Point(6, 16);
             this.displayFeedItemsListBox.Name = "displayFeedItemsListBox";
-            this.displayFeedItemsListBox.Size = new System.Drawing.Size(357, 394);
+            this.displayFeedItemsListBox.Size = new System.Drawing.Size(357, 381);
             this.displayFeedItemsListBox.TabIndex = 0;
             this.displayFeedItemsListBox.SelectedIndexChanged += new System.EventHandler(this.displayFeedItemsListBox_SelectedIndexChanged);
             this.displayFeedItemsListBox.DoubleClick += new System.EventHandler(this.displayFeedItemsListBox_DoubleClick);
             // 
             // showFeedArticleContentBox
             // 
+            this.showFeedArticleContentBox.Controls.Add(this.feedDescriptionWebBrowser);
+            this.showFeedArticleContentBox.Controls.Add(this.rssLinkLable);
             this.showFeedArticleContentBox.Controls.Add(this.feedItemDescritopnTextBox);
             this.showFeedArticleContentBox.Location = new System.Drawing.Point(388, 92);
             this.showFeedArticleContentBox.Name = "showFeedArticleContentBox";
@@ -100,12 +104,31 @@
             this.showFeedArticleContentBox.TabStop = false;
             this.showFeedArticleContentBox.Text = "Descritption";
             // 
+            // feedDescriptionWebBrowser
+            // 
+            this.feedDescriptionWebBrowser.Location = new System.Drawing.Point(9, 16);
+            this.feedDescriptionWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.feedDescriptionWebBrowser.Name = "feedDescriptionWebBrowser";
+            this.feedDescriptionWebBrowser.Size = new System.Drawing.Size(461, 381);
+            this.feedDescriptionWebBrowser.TabIndex = 2;
+            // 
+            // rssLinkLable
+            // 
+            this.rssLinkLable.AutoSize = true;
+            this.rssLinkLable.Location = new System.Drawing.Point(6, 400);
+            this.rssLinkLable.Name = "rssLinkLable";
+            this.rssLinkLable.Size = new System.Drawing.Size(40, 13);
+            this.rssLinkLable.TabIndex = 1;
+            this.rssLinkLable.TabStop = true;
+            this.rssLinkLable.Text = "Go To:";
+            this.rssLinkLable.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.rssLinkLable_LinkClicked);
+            // 
             // feedItemDescritopnTextBox
             // 
             this.feedItemDescritopnTextBox.Location = new System.Drawing.Point(7, 16);
             this.feedItemDescritopnTextBox.Multiline = true;
             this.feedItemDescritopnTextBox.Name = "feedItemDescritopnTextBox";
-            this.feedItemDescritopnTextBox.Size = new System.Drawing.Size(457, 394);
+            this.feedItemDescritopnTextBox.Size = new System.Drawing.Size(457, 381);
             this.feedItemDescritopnTextBox.TabIndex = 0;
             // 
             // Form1
@@ -136,6 +159,8 @@
         private System.Windows.Forms.GroupBox showFeedArticleContentBox;
         private System.Windows.Forms.ListBox displayFeedItemsListBox;
         private System.Windows.Forms.TextBox feedItemDescritopnTextBox;
+        private System.Windows.Forms.LinkLabel rssLinkLable;
+        private System.Windows.Forms.WebBrowser feedDescriptionWebBrowser;
     }
 }
 

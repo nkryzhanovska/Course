@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace RssReaderHomework
 {
     partial class Form1
     {
@@ -32,6 +32,10 @@
             this.addNewFeedUrlTestBox = new System.Windows.Forms.TextBox();
             this.getFeedButton = new System.Windows.Forms.Button();
             this.showFeedArticlesBox = new System.Windows.Forms.GroupBox();
+            this.saveFeedsToFileButton = new System.Windows.Forms.Button();
+            this.refreshFeedsButton = new System.Windows.Forms.Button();
+            this.feedLatestArticles = new System.Windows.Forms.Label();
+            this.dispalyRssFeedsListBox = new System.Windows.Forms.ListBox();
             this.displayFeedItemsListBox = new System.Windows.Forms.ListBox();
             this.showFeedArticleContentBox = new System.Windows.Forms.GroupBox();
             this.feedDescriptionWebBrowser = new System.Windows.Forms.WebBrowser();
@@ -73,21 +77,63 @@
             // 
             // showFeedArticlesBox
             // 
+            this.showFeedArticlesBox.Controls.Add(this.saveFeedsToFileButton);
+            this.showFeedArticlesBox.Controls.Add(this.refreshFeedsButton);
+            this.showFeedArticlesBox.Controls.Add(this.feedLatestArticles);
+            this.showFeedArticlesBox.Controls.Add(this.dispalyRssFeedsListBox);
             this.showFeedArticlesBox.Controls.Add(this.displayFeedItemsListBox);
             this.showFeedArticlesBox.Location = new System.Drawing.Point(13, 92);
             this.showFeedArticlesBox.Name = "showFeedArticlesBox";
             this.showFeedArticlesBox.Size = new System.Drawing.Size(369, 430);
             this.showFeedArticlesBox.TabIndex = 1;
             this.showFeedArticlesBox.TabStop = false;
-            this.showFeedArticlesBox.Text = "Latest Articles";
+            this.showFeedArticlesBox.Text = "Added Feeds";
+            // 
+            // saveFeedsToFileButton
+            // 
+            this.saveFeedsToFileButton.Location = new System.Drawing.Point(116, 179);
+            this.saveFeedsToFileButton.Name = "saveFeedsToFileButton";
+            this.saveFeedsToFileButton.Size = new System.Drawing.Size(88, 23);
+            this.saveFeedsToFileButton.TabIndex = 3;
+            this.saveFeedsToFileButton.Text = "Save To File";
+            this.saveFeedsToFileButton.UseVisualStyleBackColor = true;
+            this.saveFeedsToFileButton.Click += new System.EventHandler(this.saveFeedsToFileButton_Click);
+            // 
+            // refreshFeedsButton
+            // 
+            this.refreshFeedsButton.Location = new System.Drawing.Point(7, 179);
+            this.refreshFeedsButton.Name = "refreshFeedsButton";
+            this.refreshFeedsButton.Size = new System.Drawing.Size(88, 23);
+            this.refreshFeedsButton.TabIndex = 3;
+            this.refreshFeedsButton.Text = "Refresh Feeds";
+            this.refreshFeedsButton.UseVisualStyleBackColor = true;
+            this.refreshFeedsButton.Click += new System.EventHandler(this.refreshFeedsButton_Click);
+            // 
+            // feedLatestArticles
+            // 
+            this.feedLatestArticles.AutoSize = true;
+            this.feedLatestArticles.Location = new System.Drawing.Point(7, 205);
+            this.feedLatestArticles.Name = "feedLatestArticles";
+            this.feedLatestArticles.Size = new System.Drawing.Size(73, 13);
+            this.feedLatestArticles.TabIndex = 2;
+            this.feedLatestArticles.Text = "Latest Articles";
+            // 
+            // dispalyRssFeedsListBox
+            // 
+            this.dispalyRssFeedsListBox.FormattingEnabled = true;
+            this.dispalyRssFeedsListBox.Location = new System.Drawing.Point(7, 16);
+            this.dispalyRssFeedsListBox.Name = "dispalyRssFeedsListBox";
+            this.dispalyRssFeedsListBox.Size = new System.Drawing.Size(356, 160);
+            this.dispalyRssFeedsListBox.TabIndex = 1;
+            this.dispalyRssFeedsListBox.SelectedIndexChanged += new System.EventHandler(this.dispalyRssFeedsListBox_SelectedIndexChanged);
             // 
             // displayFeedItemsListBox
             // 
             this.displayFeedItemsListBox.FormattingEnabled = true;
             this.displayFeedItemsListBox.HorizontalScrollbar = true;
-            this.displayFeedItemsListBox.Location = new System.Drawing.Point(6, 16);
+            this.displayFeedItemsListBox.Location = new System.Drawing.Point(6, 224);
             this.displayFeedItemsListBox.Name = "displayFeedItemsListBox";
-            this.displayFeedItemsListBox.Size = new System.Drawing.Size(357, 381);
+            this.displayFeedItemsListBox.Size = new System.Drawing.Size(357, 173);
             this.displayFeedItemsListBox.TabIndex = 0;
             this.displayFeedItemsListBox.SelectedIndexChanged += new System.EventHandler(this.displayFeedItemsListBox_SelectedIndexChanged);
             this.displayFeedItemsListBox.DoubleClick += new System.EventHandler(this.displayFeedItemsListBox_DoubleClick);
@@ -144,6 +190,7 @@
             this.addFeedBox.ResumeLayout(false);
             this.addFeedBox.PerformLayout();
             this.showFeedArticlesBox.ResumeLayout(false);
+            this.showFeedArticlesBox.PerformLayout();
             this.showFeedArticleContentBox.ResumeLayout(false);
             this.showFeedArticleContentBox.PerformLayout();
             this.ResumeLayout(false);
@@ -161,6 +208,10 @@
         private System.Windows.Forms.TextBox feedItemDescritopnTextBox;
         private System.Windows.Forms.LinkLabel rssLinkLable;
         private System.Windows.Forms.WebBrowser feedDescriptionWebBrowser;
+        private System.Windows.Forms.ListBox dispalyRssFeedsListBox;
+        private System.Windows.Forms.Button saveFeedsToFileButton;
+        private System.Windows.Forms.Button refreshFeedsButton;
+        private System.Windows.Forms.Label feedLatestArticles;
     }
 }
 

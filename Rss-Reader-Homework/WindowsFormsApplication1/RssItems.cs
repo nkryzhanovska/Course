@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApplication1
+namespace RssReaderHomework
 {
     public class RssItems : List<RssItem>
     {
@@ -22,6 +22,7 @@ namespace WindowsFormsApplication1
 
         public RssItem GetItem(string title)
         {
+            
             foreach (RssItem checkItem in this)
             {
                 if (checkItem.Title == title)

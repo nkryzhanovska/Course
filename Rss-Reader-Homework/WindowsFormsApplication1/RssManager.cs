@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace WindowsFormsApplication1
+namespace RssReaderHomework
 {
     public class RssManager
     {
@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
         public string Link;
         public RssItems Items;
 
-        private string Url;
+        public string Url;
 
         public RssManager(string url)
         {
@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
             XmlTextReader xmlReader = new XmlTextReader(url);
 
             XmlDocument xmlDoc = new XmlDocument();
-
+            Url = url;
             try
             {
                 xmlDoc.Load(xmlReader);
@@ -71,10 +71,28 @@ namespace WindowsFormsApplication1
                     throw new Exception("The error in XML. The channel description is not found");
                 }
             }
+
+            catch (System.Net.WebException ex)
+            {
+                MessageBox.Show("The Feed URL is not valid. Try to enter valid feed URL");                                 
+            } 
+
+
+            catch (System.IO.FileNotFoundException ex)
+            {
+                MessageBox.Show("Feed URL not found. Try to enter valid feed URL");                
+            }
+
+            catch (XmlException ex)
+            {
+                MessageBox.Show("XML file is broken. Try another feed URL");                
+            }
+
             catch (Exception ex)
             {
-
+                throw ex;
             }
+
             finally
             {
                 xmlReader.Close();

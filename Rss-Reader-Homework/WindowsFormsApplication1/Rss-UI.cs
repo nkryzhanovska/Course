@@ -17,7 +17,7 @@ namespace RssReaderHomework
         public Form1()
         {
             InitializeComponent();
-            view_RssAdded();
+            
         }
 
 
@@ -58,6 +58,10 @@ namespace RssReaderHomework
                         dispalyRssFeedsListBox.Items.Add(CurrFeed[i].Title);
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("There were no previous saved feed URLs");
             }
 
 
@@ -234,6 +238,11 @@ namespace RssReaderHomework
                 }
             }
             return false;
+        }
+
+        private void rssLoadFromFileButton_Click(object sender, EventArgs e)
+        {
+            view_RssAdded();
         }
 
     }

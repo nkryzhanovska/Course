@@ -41,6 +41,7 @@
             this.feedDescriptionWebBrowser = new System.Windows.Forms.WebBrowser();
             this.rssLinkLable = new System.Windows.Forms.LinkLabel();
             this.feedItemDescritopnTextBox = new System.Windows.Forms.TextBox();
+            this.removeFeedButton = new System.Windows.Forms.Button();
             this.addFeedBox.SuspendLayout();
             this.showFeedArticlesBox.SuspendLayout();
             this.showFeedArticleContentBox.SuspendLayout();
@@ -77,6 +78,7 @@
             // 
             // showFeedArticlesBox
             // 
+            this.showFeedArticlesBox.Controls.Add(this.removeFeedButton);
             this.showFeedArticlesBox.Controls.Add(this.saveFeedsToFileButton);
             this.showFeedArticlesBox.Controls.Add(this.refreshFeedsButton);
             this.showFeedArticlesBox.Controls.Add(this.feedLatestArticles);
@@ -177,6 +179,16 @@
             this.feedItemDescritopnTextBox.Size = new System.Drawing.Size(457, 381);
             this.feedItemDescritopnTextBox.TabIndex = 0;
             // 
+            // removeFeedButton
+            // 
+            this.removeFeedButton.Location = new System.Drawing.Point(222, 179);
+            this.removeFeedButton.Name = "removeFeedButton";
+            this.removeFeedButton.Size = new System.Drawing.Size(88, 23);
+            this.removeFeedButton.TabIndex = 3;
+            this.removeFeedButton.Text = "Remove Feed";
+            this.removeFeedButton.UseVisualStyleBackColor = true;
+            this.removeFeedButton.Click += new System.EventHandler(this.removeFeedButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,6 +224,7 @@
         private System.Windows.Forms.Button saveFeedsToFileButton;
         private System.Windows.Forms.Button refreshFeedsButton;
         private System.Windows.Forms.Label feedLatestArticles;
+        private System.Windows.Forms.Button removeFeedButton;
     }
 }
 

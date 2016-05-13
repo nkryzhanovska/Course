@@ -103,7 +103,6 @@ namespace RssReaderHomework
         {
             Url = string.Empty;
         }
-
-
+       
     }
 }

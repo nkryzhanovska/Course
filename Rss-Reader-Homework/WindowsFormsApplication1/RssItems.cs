@@ -8,11 +8,11 @@ namespace RssReaderHomework
 {
     public class RssItems : List<RssItem>
     {
-        new public bool Contains(RssItem item)
+        public bool AlreadyAddedItem(RssItem item)
         {
             foreach (RssItem checkItem in this)
             {
-                if (item.Title == checkItem.Title)
+                if (item.Title.Equals(checkItem.Title))
                 {
                     return true;
                 }                              
@@ -25,7 +25,7 @@ namespace RssReaderHomework
             
             foreach (RssItem checkItem in this)
             {
-                if (checkItem.Title == title)
+                if (checkItem.Title.Equals(title))
                 {
                     return checkItem;
                 }

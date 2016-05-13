@@ -45,7 +45,10 @@ namespace RssReaderHomework
                 for (int i = 0; i < feedLinks.Count; i++)
                 {
                     oldFeed = new RssManager(feedLinks[i]);
-                    CurrFeed.Add(oldFeed);
+                    if (oldFeed.Title != null)
+                    {
+                        CurrFeed.Add(oldFeed);
+                    }
                 }
 
                 if (CurrFeed != null)
@@ -69,19 +72,26 @@ namespace RssReaderHomework
         {
             if (!String.IsNullOrEmpty(addNewFeedUrlTestBox.Text))
             {
-                feedDescriptionWebBrowser.Navigate("about:blank");
-                displayFeedItemsListBox.Items.Clear();
+                RefreshBoxes();
 
-                RssManager CurrentFeed;
-                CurrentFeed = new RssManager(addNewFeedUrlTestBox.Text);
-
-                CurrFeed.Add(CurrentFeed);
-                if (!String.IsNullOrEmpty(CurrentFeed.Title))
+                if (!ExistFeed(addNewFeedUrlTestBox.Text))
                 {
-                    dispalyRssFeedsListBox.Items.Add(CurrentFeed.Title);
-                }
+                    RssManager CurrentFeed;
+                    CurrentFeed = new RssManager(addNewFeedUrlTestBox.Text);
 
-                addNewFeedUrlTestBox.Clear();
+                    CurrFeed.Add(CurrentFeed);
+                    if (!String.IsNullOrEmpty(CurrentFeed.Title))
+                    {
+                        dispalyRssFeedsListBox.Items.Add(CurrentFeed.Title);
+                    }
+
+                    addNewFeedUrlTestBox.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Entered feed already added. Please add an another feed URL");
+                    addNewFeedUrlTestBox.Clear();
+                }
             }
             else
             {
@@ -123,21 +133,21 @@ namespace RssReaderHomework
 
         private void dispalyRssFeedsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            displayFeedItemsListBox.Items.Clear();
-            feedDescriptionWebBrowser.Navigate("about:blank");
+            RefreshBoxes();
 
-            if (CurrFeed[dispalyRssFeedsListBox.SelectedIndex].Title != null)
+            if (dispalyRssFeedsListBox.SelectedIndex > -1)
             {
-                for (int i = 0; i < CurrFeed[dispalyRssFeedsListBox.SelectedIndex].Items.Count; i++)
+                if (!String.IsNullOrEmpty(CurrFeed[dispalyRssFeedsListBox.SelectedIndex].Title))
                 {
-                    if (CurrFeed[dispalyRssFeedsListBox.SelectedIndex].Items[i] != null)
+                    for (int i = 0; i < CurrFeed[dispalyRssFeedsListBox.SelectedIndex].Items.Count; i++)
                     {
-                        displayFeedItemsListBox.Items.Add(CurrFeed[dispalyRssFeedsListBox.SelectedIndex].Items[i].Title);
+                        if (CurrFeed[dispalyRssFeedsListBox.SelectedIndex].Items[i] != null)
+                        {
+                            displayFeedItemsListBox.Items.Add(CurrFeed[dispalyRssFeedsListBox.SelectedIndex].Items[i].Title);
+                        }
                     }
+                    displayFeedItemsListBox.SelectedIndex = 0;
                 }
-                displayFeedItemsListBox.SelectedIndex = 0;
-
-
             }
         }
 
@@ -145,8 +155,7 @@ namespace RssReaderHomework
         {
             if (CurrFeed != null)
             {
-                displayFeedItemsListBox.Items.Clear();
-                feedDescriptionWebBrowser.Navigate("about:blank");
+                RefreshBoxes();
 
                 for (int i = 0; i < CurrFeed.Count; i++)
                 {
@@ -157,13 +166,13 @@ namespace RssReaderHomework
             }
             else
             {
-                MessageBox.Show("Please add at least one feed first");
+                MessageBox.Show("Please add at least one feed URL first");
             }
         }
 
         private void saveFeedsToFileButton_Click(object sender, EventArgs e)
         {
-            if (CurrFeed != null)
+            if (CurrFeed.Count != 0)
             {
                 List<string> feedLink = new List<string>();
                 for (int i = 0; i < CurrFeed.Count; i++)
@@ -179,15 +188,53 @@ namespace RssReaderHomework
                         writer.WriteLine(item);
                     }
                 }
-                MessageBox.Show("All added Feeds are saved");
+                MessageBox.Show("All added feed URLs are saved");
             }
             else
             {
-                MessageBox.Show("Please add at least one feed first");
+                MessageBox.Show("Please add at least one feed URL first");
             }
         }
 
+        private void removeFeedButton_Click(object sender, EventArgs e)
+        {
+            if (CurrFeed.Count != 0)
+            {
+                RefreshBoxes();
 
+                int a = dispalyRssFeedsListBox.SelectedIndex;
+                object tempitem = dispalyRssFeedsListBox.Items[a];
+                dispalyRssFeedsListBox.Items.Remove(tempitem);
+                CurrFeed.RemoveAt(a);
+
+                dispalyRssFeedsListBox.Refresh();
+
+                MessageBox.Show("Selected feed is removed");
+            }
+            else
+            {
+                MessageBox.Show("Please add at least one feed URL first");
+            }
+        }
+
+        private void RefreshBoxes()
+        {
+            feedDescriptionWebBrowser.Navigate("about:blank");
+            displayFeedItemsListBox.Items.Clear();
+            rssLinkLable.ResetText();
+        }
+
+        private bool ExistFeed(string url)
+        {
+            foreach (RssManager checkItem in CurrFeed)
+            {
+                if (checkItem.Url.Equals(url))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
     }
 }
